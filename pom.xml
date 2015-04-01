@@ -14,35 +14,30 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <artifactId>che-sdk-parent</artifactId>
-        <groupId>org.eclipse.che.sdk</groupId>
-        <version>3.9.0-SNAPSHOT</version>
-        <relativePath>../pom.xml</relativePath>
+        <artifactId>maven-depmgt-pom</artifactId>
+        <groupId>org.eclipse.che.depmgt</groupId>
+        <version>1.20.0-SNAPSHOT</version>
     </parent>
-    <artifactId>codenvy-plugin-sdk-parent</artifactId>
+    <groupId>org.eclipse.che.sdk-tutorials</groupId>
+    <artifactId>che-sdk-tutorials-parent</artifactId>
+    <version>3.9.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>Codenvy :: Plugin SDK</name>
     <modules>
-        <module>codenvy-ext-plugins</module>
-        <module>codenvy-ide-env-local</module>
-        <module>codenvy-sdk-api-war</module>
-        <module>codenvy-runner-sdk</module>
-        <module>codenvy-sdk-tutorials/action-api</module>
-        <module>codenvy-sdk-tutorials/analytics-event-logger-ext</module>
-        <module>codenvy-sdk-tutorials/theme-api</module>
-        <module>codenvy-sdk-tutorials/parts-api</module>
-        <module>codenvy-sdk-tutorials/notification-api</module>
-        <module>codenvy-sdk-tutorials/editor-api</module>
-        <module>codenvy-sdk-tutorials/empty-ext</module>
-        <module>codenvy-sdk-tutorials/gin</module>
-        <module>codenvy-sdk-tutorials/gist-ext</module>
-        <module>codenvy-sdk-tutorials/helloworld-ext</module>
-        <module>codenvy-sdk-tutorials/icons-regitry-api</module>
-        <module>codenvy-sdk-tutorials/wysiwyg-editor</module>
-        <module>codenvy-sdk-tutorials/server-side</module>
-        <module>codenvy-sdk-tools</module>
+        <module>action-api</module>
+        <module>analytics-event-logger-ext</module>
+        <module>theme-api</module>
+        <module>parts-api</module>
+        <module>notification-api</module>
+        <module>editor-api</module>
+        <module>empty-ext</module>
+        <module>gin</module>
+        <module>gist-ext</module>
+        <module>helloworld-ext</module>
+        <module>icons-regitry-api</module>
+        <module>wysiwyg-editor</module>
+        <module>server-side</module>
     </modules>
-
     <properties>
         <dto-generator-out-directory>${project.build.directory}/generated-sources/dto/</dto-generator-out-directory>
         <gwt.test.skip>true</gwt.test.skip>
