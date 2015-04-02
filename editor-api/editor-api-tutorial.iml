@@ -74,9 +74,7 @@
     <orderEntry type="module" module-name="che-core-ide-generators" />
     <orderEntry type="module" module-name="che-core-ide-ui" />
     <orderEntry type="library" name="Maven: com.google.code.findbugs:jsr305:1.3.9" level="project" />
-    <orderEntry type="library" name="Maven: org.eclipse.che.core:codenvy-ide-jseditor:3.9.0-SNAPSHOT" level="project" />
-    <orderEntry type="library" name="Maven: org.eclipse.che.core:che-core-client-gwt-commons:3.9.0-SNAPSHOT" level="project" />
-    <orderEntry type="library" name="Maven: org.eclipse.che.core:codenvy-ide-api:3.9.0-SNAPSHOT" level="project" />
+    <orderEntry type="module" module-name="che-core-ide-jseditor" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: com.google.gwt:gwt-user:2.7.0" level="project" />
     <orderEntry type="library" name="Maven: javax.validation:validation-api:1.0.0.GA" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: javax.validation:validation-api:sources:1.0.0.GA" level="project" />
