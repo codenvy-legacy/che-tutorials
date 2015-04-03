@@ -18,7 +18,7 @@
         <groupId>org.eclipse.che.tutorials</groupId>
         <version>3.9.0-SNAPSHOT</version>
     </parent>
-    <artifactId>helloworld-extension</artifactId>
+    <artifactId>che-tutorial-helloworld-ext</artifactId>
     <packaging>jar</packaging>
     <name>Che Tutorial :: Hello World</name>
     <dependencies>

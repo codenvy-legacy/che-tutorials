@@ -18,7 +18,7 @@
         <groupId>org.eclipse.che.tutorials</groupId>
         <version>3.9.0-SNAPSHOT</version>
     </parent>
-    <artifactId>gin-tutorial</artifactId>
+    <artifactId>che-tutorial-gin</artifactId>
     <packaging>jar</packaging>
     <name>Che Tutorial :: GIN</name>
     <dependencies>

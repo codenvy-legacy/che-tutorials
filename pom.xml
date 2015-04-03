@@ -18,25 +18,25 @@
         <groupId>org.eclipse.che.depmgt</groupId>
         <version>1.20.0-SNAPSHOT</version>
     </parent>
-    <groupId>org.eclipse.che.sdk-tutorials</groupId>
-    <artifactId>che-sdk-tutorials-parent</artifactId>
+    <groupId>org.eclipse.che.tutorials</groupId>
+    <artifactId>che-tutorials-parent</artifactId>
     <version>3.9.0-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <name>Codenvy :: Plugin SDK</name>
+    <name>Che Tutorials :: Parent</name>
     <modules>
-        <module>action-api</module>
-        <module>analytics-event-logger-ext</module>
-        <module>theme-api</module>
-        <module>parts-api</module>
-        <module>notification-api</module>
-        <module>editor-api</module>
-        <module>empty-ext</module>
-        <module>gin</module>
-        <module>gist-ext</module>
-        <module>helloworld-ext</module>
-        <module>icons-regitry-api</module>
-        <module>wysiwyg-editor</module>
-        <module>server-side</module>
+        <module>che-tutorial-action-api</module>
+        <module>che-tutorial-analytics-event</module>
+        <module>che-tutorial-editor-api</module>
+        <module>che-tutorial-empty-ext</module>
+        <module>che-tutorial-gin</module>
+        <module>che-tutorial-gist-ext</module>
+        <module>che-tutorial-helloworld-ext</module>
+        <module>che-tutorial-icons-registry-api</module>
+        <module>che-tutorial-theme-api</module>
+        <module>che-tutorial-parts-api</module>
+        <module>che-tutorial-notification-api</module>
+        <module>che-tutorial-server-side</module>
+        <module>che-tutorial-wysiwyg-editor</module>
     </modules>
     <properties>
         <dto-generator-out-directory>${project.build.directory}/generated-sources/dto/</dto-generator-out-directory>

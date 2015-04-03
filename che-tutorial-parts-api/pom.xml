@@ -18,7 +18,7 @@
         <groupId>org.eclipse.che.tutorials</groupId>
         <version>3.9.0-SNAPSHOT</version>
     </parent>
-    <artifactId>parts-api-tutorial</artifactId>
+    <artifactId>che-tutorial-parts-api</artifactId>
     <packaging>jar</packaging>
     <name>Che Tutorial :: New Project Wizard API</name>
     <dependencies>

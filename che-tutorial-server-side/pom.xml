@@ -18,7 +18,7 @@
         <groupId>org.eclipse.che.tutorials</groupId>
         <version>3.9.0-SNAPSHOT</version>
     </parent>
-    <artifactId>server-side-tutorial</artifactId>
+    <artifactId>che-tutorial-server-side</artifactId>
     <packaging>jar</packaging>
     <name>Che Tutorial :: Server Side</name>
     <dependencies>
