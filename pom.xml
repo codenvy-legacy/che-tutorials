@@ -38,6 +38,12 @@
         <module>che-tutorial-server-side</module>
         <module>che-tutorial-wysiwyg-editor</module>
     </modules>
+    <scm>
+        <connection>scm:git:git@github.com:codenvy/che-tutorials.git</connection>
+        <developerConnection>scm:git:git@github.com:codenvy/che-tutorials.git</developerConnection>
+        <tag>HEAD</tag>
+        <url>https://github.com/codenvy/che-tutorials</url>
+    </scm>
     <properties>
         <dto-generator-out-directory>${project.build.directory}/generated-sources/dto/</dto-generator-out-directory>
         <gwt.test.skip>true</gwt.test.skip>
