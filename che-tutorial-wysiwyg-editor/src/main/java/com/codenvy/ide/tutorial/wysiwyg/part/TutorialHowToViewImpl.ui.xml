@@ -16,7 +16,7 @@
         <p>This is a tutorial how to:</p>
         <ul>
             <li>create any project</li>
-            <li>create HTM file in it</li>
+            <li>create a file with .che extension in it (for example myfile.che)</li>
             <li>open this file</li></ul>
 
         <p>It will be opened in WYSIWYG editor where you can make use of a WYSIWYG toolbar.</p>

@@ -14,6 +14,8 @@ import org.eclipse.che.api.project.gwt.client.ProjectServiceClient;
 import org.eclipse.che.ide.api.editor.EditorPartPresenter;
 import org.eclipse.che.ide.api.editor.EditorProvider;
 import com.codenvy.ide.tutorial.wysiwyg.editor.WysiwygEditor;
+import com.google.inject.Inject;
+
 import org.eclipse.che.ide.ui.dialogs.DialogFactory;
 
 /** @author Evgen Vidolob */
@@ -21,6 +23,7 @@ public class WysiwygEditorProvider implements EditorProvider {
     private final ProjectServiceClient projectServiceClient;
     private final DialogFactory        dialogFactory;
 
+    @Inject
     public WysiwygEditorProvider(ProjectServiceClient projectServiceClient, DialogFactory dialogFactory) {
         this.projectServiceClient = projectServiceClient;
         this.dialogFactory = dialogFactory;
