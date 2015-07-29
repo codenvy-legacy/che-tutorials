@@ -10,6 +10,7 @@
  *******************************************************************************/
 package com.codenvy.ide.tutorial.notification.part;
 
+import com.google.gwt.user.client.ui.IsWidget;
 import org.eclipse.che.ide.api.parts.AbstractPartPresenter;
 import com.google.gwt.resources.client.ImageResource;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
@@ -33,6 +34,18 @@ public class TutorialHowToPresenter extends AbstractPartPresenter implements Tut
     public TutorialHowToPresenter(TutorialHowToView view) {
         this.view = view;
         this.view.setDelegate(this);
+    }
+
+    /** {@inheritDoc} */
+    @Override
+    public void setVisible(boolean visible) {
+        view.asWidget().setVisible(visible);
+    }
+
+    /** {@inheritDoc} */
+    @Override
+    public IsWidget getView() {
+        return view;
     }
 
     /** {@inheritDoc} */

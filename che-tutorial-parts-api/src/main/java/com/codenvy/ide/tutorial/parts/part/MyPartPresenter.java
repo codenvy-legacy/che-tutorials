@@ -10,6 +10,7 @@
  *******************************************************************************/
 package com.codenvy.ide.tutorial.parts.part;
 
+import com.google.gwt.user.client.ui.IsWidget;
 import org.eclipse.che.ide.api.parts.base.BasePresenter;
 import com.google.gwt.resources.client.ImageResource;
 import com.google.gwt.user.client.Window;
@@ -36,6 +37,16 @@ public class MyPartPresenter extends BasePresenter implements MyPartView.ActionD
         this.view.setDelegate(this);
         this.view.setTitle(title);
         this.title = title;
+    }
+
+    @Override
+    public void setVisible(boolean visible) {
+        view.asWidget().setVisible(visible);
+    }
+
+    @Override
+    public IsWidget getView() {
+        return view;
     }
 
     /** {@inheritDoc} */
