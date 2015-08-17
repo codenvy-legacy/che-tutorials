@@ -16,7 +16,7 @@
     <parent>
         <artifactId>che-tutorials-parent</artifactId>
         <groupId>org.eclipse.che.tutorials</groupId>
-        <version>3.12.0-SNAPSHOT</version>
+        <version>3.12.0</version>
     </parent>
     <artifactId>che-tutorial-theme-api</artifactId>
     <packaging>jar</packaging>
