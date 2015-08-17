@@ -20,7 +20,7 @@
     </parent>
     <groupId>org.eclipse.che.tutorials</groupId>
     <artifactId>che-tutorials-parent</artifactId>
-    <version>3.12.0</version>
+    <version>3.12.1-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>Che Tutorials :: Parent</name>
     <modules>
@@ -41,7 +41,7 @@
     <scm>
         <connection>scm:git:git@github.com:codenvy/che-tutorials.git</connection>
         <developerConnection>scm:git:git@github.com:codenvy/che-tutorials.git</developerConnection>
-        <tag>3.12.0</tag>
+        <tag>HEAD</tag>
         <url>https://github.com/codenvy/che-tutorials</url>
     </scm>
     <properties>
