@@ -20,7 +20,7 @@ import com.google.inject.assistedinject.Assisted;
 
 import org.vectomatic.dom.svg.ui.SVGResource;
 
-import javax.annotation.Nonnull;
+import javax.validation.constraints.NotNull;
 
 /**
  * The presenter that represent general part for showing part API.
@@ -56,7 +56,7 @@ public class MyPartPresenter extends BasePresenter implements MyPartView.ActionD
     }
 
     /** {@inheritDoc} */
-    @Nonnull
+    @NotNull
     @Override
     public String getTitle() {
         return title;
