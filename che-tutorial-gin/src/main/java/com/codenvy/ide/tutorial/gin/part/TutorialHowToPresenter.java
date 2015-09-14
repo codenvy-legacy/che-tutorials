@@ -18,7 +18,7 @@ import com.google.inject.Singleton;
 
 import org.vectomatic.dom.svg.ui.SVGResource;
 
-import javax.annotation.Nonnull;
+import javax.validation.constraints.NotNull;
 
 /**
  * Show information how to use action tutorial.
@@ -36,7 +36,7 @@ public class TutorialHowToPresenter extends AbstractPartPresenter implements Tut
     }
 
     /** {@inheritDoc} */
-    @Nonnull
+    @NotNull
     @Override
     public String getTitle() {
         return "GIN tutorial";

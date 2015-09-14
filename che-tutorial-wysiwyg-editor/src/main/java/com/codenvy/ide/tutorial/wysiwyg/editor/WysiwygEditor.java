@@ -10,7 +10,7 @@
  *******************************************************************************/
 package com.codenvy.ide.tutorial.wysiwyg.editor;
 
-import javax.annotation.Nonnull;
+import javax.validation.constraints.NotNull;
 
 import org.vectomatic.dom.svg.ui.SVGResource;
 
@@ -82,7 +82,7 @@ public class WysiwygEditor extends AbstractEditorPresenter {
     }
 
     /** {@inheritDoc} */
-    @Nonnull
+    @NotNull
     @Override
     public String getTitle() {
         return "WYSIWYG Editor: " + input.getFile().getName();
@@ -108,7 +108,7 @@ public class WysiwygEditor extends AbstractEditorPresenter {
 
     /** {@inheritDoc} */
     @Override
-    public void onClose(@Nonnull final AsyncCallback<Void> callback) {
+    public void onClose(@NotNull final AsyncCallback<Void> callback) {
         if (isDirty()) {
             dialogFactory.createConfirmDialog(
                                               "Close", "'" + getEditorInput().getName() + "' has been modified. Save changes?",

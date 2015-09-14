@@ -19,7 +19,7 @@ import com.google.gwt.user.client.ui.AcceptsOneWidget;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
-import javax.annotation.Nonnull;
+import javax.validation.constraints.NotNull;
 
 /**
  * Show information how to use action tutorial.
@@ -37,7 +37,7 @@ public class TutorialHowToPresenter extends AbstractPartPresenter implements Tut
     }
 
     /** {@inheritDoc} */
-    @Nonnull
+    @NotNull
     @Override
     public String getTitle() {
         return "Action API";
