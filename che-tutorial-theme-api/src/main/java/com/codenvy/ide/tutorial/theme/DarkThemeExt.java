@@ -31,14 +31,5 @@ public class DarkThemeExt extends DarkTheme {
     public String getMainFontColor() {
         return "red";
     }
-
-    @Override
-    public String getPartBackground() {
-        return "white";
-    }
-
-    @Override
-    public String getTabsPanelBackground() {
-        return "white";
-    }
+    
 }
