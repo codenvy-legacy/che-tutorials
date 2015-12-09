@@ -41,9 +41,4 @@ public class NewGroovyFileAction extends AbstractNewResourceAction {
     protected String getDefaultContent() {
         return resource.contentFile().getText();
     }
-
-    @Override
-    protected String getMimeType() {
-        return "text/x-groovy";
-    }
 }
