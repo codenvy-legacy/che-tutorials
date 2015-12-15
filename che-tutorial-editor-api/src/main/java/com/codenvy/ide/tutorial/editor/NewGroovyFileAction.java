@@ -17,7 +17,7 @@ import com.google.inject.Singleton;
 /**
  * Action to create new Groovy file.
  *
- * @author Artem Zatsarynnyy
+ * @author Artem Zatsarynnyi
  */
 @Singleton
 public class NewGroovyFileAction extends AbstractNewResourceAction {
