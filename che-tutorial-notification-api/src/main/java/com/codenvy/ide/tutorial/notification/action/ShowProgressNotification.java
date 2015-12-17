@@ -10,38 +10,36 @@
  *******************************************************************************/
 package com.codenvy.ide.tutorial.notification.action;
 
-import org.eclipse.che.ide.api.notification.Notification;
+import org.eclipse.che.ide.api.notification.NotificationListener;
 import org.eclipse.che.ide.api.notification.NotificationManager;
 import org.eclipse.che.ide.api.action.Action;
 import org.eclipse.che.ide.api.action.ActionEvent;
+import org.eclipse.che.ide.api.notification.StatusNotification;
+
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.Window;
 import com.google.inject.Inject;
 
-import static org.eclipse.che.ide.api.notification.Notification.Status.FINISHED;
-import static org.eclipse.che.ide.api.notification.Notification.Status.PROGRESS;
-import static org.eclipse.che.ide.api.notification.Notification.Type.ERROR;
 
 /**
  * The action for showing PROGRESS notification.
  *
- * @author <a href="mailto:aplotnikov@codenvy.com">Andrey Plotnikov</a>
+ * @author Andrey Plotnikov
+ * @author Vlad Zhukovskyi
  */
-public class ShowProgressNotification extends Action
-        implements Notification.OpenNotificationHandler, Notification.CloseNotificationHandler {
+public class ShowProgressNotification extends Action implements NotificationListener {
     private NotificationManager notificationManager;
-    private Notification        notification;
+    private StatusNotification  notification;
     private Timer timer = new Timer() {
         @Override
         public void run() {
             boolean isSuccessful = Window.confirm("Close notification as successful? Otherwise it will be failed.");
             if (isSuccessful) {
-                notification.setStatus(FINISHED);
-                notification.setMessage("I've finished progress...");
+                notification.setStatus(StatusNotification.Status.SUCCESS);
+                notification.setContent("I've finished progress...");
             } else {
-                notification.setStatus(FINISHED);
-                notification.setType(ERROR);
-                notification.setMessage("Some error is happened...");
+                notification.setStatus(StatusNotification.Status.FAIL);
+                notification.setContent("Some error is happened...");
             }
             notification = null;
         }
@@ -57,24 +55,32 @@ public class ShowProgressNotification extends Action
     @Override
     public void actionPerformed(ActionEvent e) {
         if (notification == null) {
-            notification = new Notification("I'm doing something...", PROGRESS, this, this);
-            notificationManager.showNotification(notification);
+            notification =
+                    new StatusNotification("Status notification", "I'm doing something...", StatusNotification.Status.PROGRESS, true, null,
+                                           this);
+            notificationManager.notify(notification);
             timer.schedule(10000);
         }
     }
 
     /** {@inheritDoc} */
     @Override
-    public void onCloseClicked() {
-        timer.cancel();
-        notification.setStatus(FINISHED);
-        notification.setMessage("The process was stopped...");
-        notification = null;
+    public void onClick() {
+        //stub
     }
 
     /** {@inheritDoc} */
     @Override
-    public void onOpenClicked() {
+    public void onDoubleClick() {
         Window.alert("You've opened notification!");
+    }
+
+    /** {@inheritDoc} */
+    @Override
+    public void onClose() {
+        timer.cancel();
+        notification.setStatus(StatusNotification.Status.SUCCESS);
+        notification.setContent("The process was stopped...");
+        notification = null;
     }
 }

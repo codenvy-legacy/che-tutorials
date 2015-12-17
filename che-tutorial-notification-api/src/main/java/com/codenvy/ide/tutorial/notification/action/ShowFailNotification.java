@@ -14,30 +14,31 @@ import org.eclipse.che.ide.api.notification.Notification;
 import org.eclipse.che.ide.api.notification.NotificationManager;
 import org.eclipse.che.ide.api.action.Action;
 import org.eclipse.che.ide.api.action.ActionEvent;
+import org.eclipse.che.ide.api.notification.StatusNotification;
+
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
-import static org.eclipse.che.ide.api.notification.Notification.Type.ERROR;
-
 /**
- * The action for showing ERROR notification.
+ * The action for showing FAIL notification.
  *
- * @author <a href="mailto:aplotnikov@codenvy.com">Andrey Plotnikov</a>
+ * @author Andrey Plotnikov
+ * @author Vlad Zhukovskyi
  */
 @Singleton
-public class ShowErrorNotification extends Action {
+public class ShowFailNotification extends Action {
     private NotificationManager notificationManager;
 
     @Inject
-    public ShowErrorNotification(NotificationManager notificationManager) {
-        super("Show ERROR notification", "This action shows ERROR notification");
+    public ShowFailNotification(NotificationManager notificationManager) {
+        super("Show FAIL notification", "This action shows FAIL notification");
         this.notificationManager = notificationManager;
     }
 
     /** {@inheritDoc} */
     @Override
     public void actionPerformed(ActionEvent e) {
-        Notification notification = new Notification("This is a error notification...", ERROR);
-        notificationManager.showNotification(notification);
+        Notification notification = new StatusNotification("This is a fail notification...", StatusNotification.Status.FAIL, true);
+        notificationManager.notify(notification);
     }
 }

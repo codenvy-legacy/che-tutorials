@@ -15,10 +15,9 @@ import org.eclipse.che.ide.api.action.DefaultActionGroup;
 import org.eclipse.che.ide.api.extension.Extension;
 import org.eclipse.che.ide.api.parts.PartStackType;
 import org.eclipse.che.ide.api.parts.WorkspaceAgent;
-import com.codenvy.ide.tutorial.notification.action.ShowErrorNotification;
-import com.codenvy.ide.tutorial.notification.action.ShowInfoNotification;
+import com.codenvy.ide.tutorial.notification.action.ShowFailNotification;
+import com.codenvy.ide.tutorial.notification.action.ShowSuccessNotification;
 import com.codenvy.ide.tutorial.notification.action.ShowProgressNotification;
-import com.codenvy.ide.tutorial.notification.action.ShowWarningNotification;
 import com.codenvy.ide.tutorial.notification.part.TutorialHowToPresenter;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
@@ -32,9 +31,11 @@ public class NotificationTutorialExtension {
     public static final String NOTIFICATION_TUTORIAL_GROUP = "notification";
 
     @Inject
-    public NotificationTutorialExtension(ActionManager actionManager, ShowInfoNotification showInfoNotification,
-                                         ShowWarningNotification showWarningNotification, ShowErrorNotification showErrorNotification,
-                                         ShowProgressNotification showProgressNotification, WorkspaceAgent workspaceAgent,
+    public NotificationTutorialExtension(ActionManager actionManager,
+                                         ShowSuccessNotification showSuccessNotification,
+                                         ShowFailNotification showFailNotification,
+                                         ShowProgressNotification showProgressNotification,
+                                         WorkspaceAgent workspaceAgent,
                                          TutorialHowToPresenter howToPresenter) {
         workspaceAgent.openPart(howToPresenter, PartStackType.EDITING);
 
@@ -44,9 +45,8 @@ public class NotificationTutorialExtension {
         actionManager.registerAction(NOTIFICATION_TUTORIAL_GROUP, notificationGroup);
         mainMenu.add(notificationGroup);
 
-        notificationGroup.add(showInfoNotification);
-        notificationGroup.add(showWarningNotification);
-        notificationGroup.add(showErrorNotification);
+        notificationGroup.add(showSuccessNotification);
+        notificationGroup.add(showFailNotification);
         notificationGroup.addSeparator();
         notificationGroup.add(showProgressNotification);
     }

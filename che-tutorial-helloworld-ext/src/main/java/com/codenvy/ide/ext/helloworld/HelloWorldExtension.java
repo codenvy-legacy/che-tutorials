@@ -21,9 +21,9 @@ import org.eclipse.che.ide.api.action.DefaultActionGroup;
 import org.eclipse.che.ide.api.action.IdeActions;
 import org.eclipse.che.ide.api.constraints.Constraints;
 import org.eclipse.che.ide.api.extension.Extension;
-import org.eclipse.che.ide.api.notification.Notification;
-import org.eclipse.che.ide.api.notification.Notification.Type;
 import org.eclipse.che.ide.api.notification.NotificationManager;
+import org.eclipse.che.ide.api.notification.StatusNotification;
+
 import com.codenvy.ide.ext.helloworld.action.HelloWorldAction;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
@@ -53,8 +53,7 @@ public class HelloWorldExtension
         contextMenu.add(action, Constraints.LAST);
 
 
-        Notification notification = new Notification("Hello World", Type.INFO);
-        notificationManager.showNotification(notification);
+        notificationManager.notify("Hello World", StatusNotification.Status.SUCCESS, true);
 
     }
 }

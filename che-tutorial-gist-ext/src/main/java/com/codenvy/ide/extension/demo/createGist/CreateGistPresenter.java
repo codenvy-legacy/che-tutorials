@@ -10,9 +10,7 @@
  *******************************************************************************/
 package com.codenvy.ide.extension.demo.createGist;
 
-import org.eclipse.che.ide.api.notification.Notification;
 import org.eclipse.che.ide.api.notification.NotificationManager;
-import org.eclipse.che.ide.api.parts.ConsolePart;
 import com.codenvy.ide.extension.demo.GistExtensionLocalizationConstant;
 import com.google.gwt.http.client.Request;
 import com.google.gwt.http.client.RequestBuilder;
@@ -35,24 +33,19 @@ public class CreateGistPresenter implements CreateGistView.ActionDelegate {
     private static final String GIT_HUB_ANONYMOUS_GISTS_HOST = "gist.github.com/anonymous";
     private CreateGistView                    view;
     private GistExtensionLocalizationConstant constant;
-    private ConsolePart                       console;
-    private NotificationManager               notificationManager
-            ;
+    private NotificationManager               notificationManager;
 
     /**
      * Create presenter.
      *  @param view
-     * @param console
      * @param constant
      * @param notificationManager
      */
     @Inject
-    public CreateGistPresenter(CreateGistView view, ConsolePart console,
-                               GistExtensionLocalizationConstant constant, NotificationManager notificationManager) {
+    public CreateGistPresenter(CreateGistView view, GistExtensionLocalizationConstant constant, NotificationManager notificationManager) {
         this.view = view;
         this.notificationManager = notificationManager;
         this.view.setDelegate(this);
-        this.console = console;
         this.constant = constant;
     }
 
@@ -125,9 +118,6 @@ public class CreateGistPresenter implements CreateGistView.ActionDelegate {
         UrlBuilder builder = new UrlBuilder();
         final String url = builder.setProtocol("https").setHost(GIT_HUB_ANONYMOUS_GISTS_HOST + "/" + gistId).buildString();
 
-        Notification notification = new Notification("Your Gist available on " + "<a href=\"" + url + "\" target=\"_blank\">" + url + "</a>", Notification.Type.INFO);
-        notificationManager.showNotification(notification);
-
-
+        notificationManager.notify("Your Gist available on " + url);
     }
 }

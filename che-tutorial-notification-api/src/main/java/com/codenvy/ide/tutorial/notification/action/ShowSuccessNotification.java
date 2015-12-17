@@ -14,30 +14,31 @@ import org.eclipse.che.ide.api.notification.Notification;
 import org.eclipse.che.ide.api.notification.NotificationManager;
 import org.eclipse.che.ide.api.action.Action;
 import org.eclipse.che.ide.api.action.ActionEvent;
+import org.eclipse.che.ide.api.notification.StatusNotification;
+
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
-
-import static org.eclipse.che.ide.api.notification.Notification.Type.INFO;
 
 /**
  * The action for showing INFO notification.
  *
- * @author <a href="mailto:aplotnikov@codenvy.com">Andrey Plotnikov</a>
+ * @author Andrey Plotnikov
+ * @author Vlad Zhukovskyi
  */
 @Singleton
-public class ShowInfoNotification extends Action {
+public class ShowSuccessNotification extends Action {
     private NotificationManager notificationManager;
 
     @Inject
-    public ShowInfoNotification(NotificationManager notificationManager) {
-        super("Show INFO notification", "This action shows INFO notification");
+    public ShowSuccessNotification(NotificationManager notificationManager) {
+        super("Show SUCCESS notification", "This action shows SUCCESS notification");
         this.notificationManager = notificationManager;
     }
 
     /** {@inheritDoc} */
     @Override
     public void actionPerformed(ActionEvent e) {
-        Notification notification = new Notification("This is a info notification...", INFO);
-        notificationManager.showNotification(notification);
+        Notification notification = new StatusNotification("This is a info notification...", StatusNotification.Status.SUCCESS, true);
+        notificationManager.notify(notification);
     }
 }

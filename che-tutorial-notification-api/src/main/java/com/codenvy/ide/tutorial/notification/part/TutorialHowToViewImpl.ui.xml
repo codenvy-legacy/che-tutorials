@@ -33,7 +33,7 @@
             ...
         </pre>
         <p>
-            You can view full code in com.codenvy.ide.tutorial.notification.action.ShowInfoNotification.
+            You can view full code in com.codenvy.ide.tutorial.notification.action.ShowSuccessNotification.
         </p>
         <p>
             <strong>Show WARNING</strong>
@@ -62,7 +62,7 @@
             ...
         </pre>
         <p>
-            You can view full code in com.codenvy.ide.tutorial.notification.action.ShowErrorNotification.
+            You can view full code in com.codenvy.ide.tutorial.notification.action.ShowFailNotification.
         </p>
         <p>
             <strong>Show PROGRESS</strong>
