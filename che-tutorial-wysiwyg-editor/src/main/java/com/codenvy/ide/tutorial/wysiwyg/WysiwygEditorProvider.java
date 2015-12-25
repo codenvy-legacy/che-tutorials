@@ -10,23 +10,26 @@
  *******************************************************************************/
 package com.codenvy.ide.tutorial.wysiwyg;
 
-import org.eclipse.che.api.project.gwt.client.ProjectServiceClient;
-import org.eclipse.che.ide.api.editor.EditorPartPresenter;
-import org.eclipse.che.ide.api.editor.EditorProvider;
 import com.codenvy.ide.tutorial.wysiwyg.editor.WysiwygEditor;
 import com.google.inject.Inject;
 
+import org.eclipse.che.api.project.gwt.client.ProjectServiceClient;
+import org.eclipse.che.ide.api.app.AppContext;
+import org.eclipse.che.ide.api.editor.EditorPartPresenter;
+import org.eclipse.che.ide.api.editor.EditorProvider;
 import org.eclipse.che.ide.ui.dialogs.DialogFactory;
 
 /** @author Evgen Vidolob */
 public class WysiwygEditorProvider implements EditorProvider {
     private final ProjectServiceClient projectServiceClient;
     private final DialogFactory        dialogFactory;
+    private final AppContext           appContext;
 
     @Inject
-    public WysiwygEditorProvider(ProjectServiceClient projectServiceClient, DialogFactory dialogFactory) {
+    public WysiwygEditorProvider(ProjectServiceClient projectServiceClient, DialogFactory dialogFactory, AppContext appContext) {
         this.projectServiceClient = projectServiceClient;
         this.dialogFactory = dialogFactory;
+        this.appContext = appContext;
     }
 
     @Override
@@ -42,6 +45,6 @@ public class WysiwygEditorProvider implements EditorProvider {
     /** {@inheritDoc} */
     @Override
     public EditorPartPresenter getEditor() {
-        return new WysiwygEditor(projectServiceClient, dialogFactory);
+        return new WysiwygEditor(projectServiceClient, dialogFactory, appContext);
     }
 }
