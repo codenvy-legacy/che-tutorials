@@ -10,11 +10,15 @@
  *******************************************************************************/
 package com.codenvy.ide.tutorial.wysiwyg.editor;
 
-import javax.validation.constraints.NotNull;
-
-import org.vectomatic.dom.svg.ui.SVGResource;
+import com.google.gwt.dom.client.Style;
+import com.google.gwt.resources.client.ImageResource;
+import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.google.gwt.user.client.ui.AcceptsOneWidget;
+import com.google.gwt.user.client.ui.DockLayoutPanel;
+import com.google.gwt.user.client.ui.RichTextArea;
 
 import org.eclipse.che.api.project.gwt.client.ProjectServiceClient;
+import org.eclipse.che.ide.api.app.AppContext;
 import org.eclipse.che.ide.api.editor.AbstractEditorPresenter;
 import org.eclipse.che.ide.api.editor.EditorInput;
 import org.eclipse.che.ide.rest.AsyncRequestCallback;
@@ -23,23 +27,23 @@ import org.eclipse.che.ide.ui.dialogs.CancelCallback;
 import org.eclipse.che.ide.ui.dialogs.ConfirmCallback;
 import org.eclipse.che.ide.ui.dialogs.DialogFactory;
 import org.eclipse.che.ide.util.loging.Log;
-import com.google.gwt.dom.client.Style;
-import com.google.gwt.resources.client.ImageResource;
-import com.google.gwt.user.client.rpc.AsyncCallback;
-import com.google.gwt.user.client.ui.AcceptsOneWidget;
-import com.google.gwt.user.client.ui.DockLayoutPanel;
-import com.google.gwt.user.client.ui.RichTextArea;
+import org.vectomatic.dom.svg.ui.SVGResource;
+
+import javax.validation.constraints.NotNull;
 
 /** @author Evgen Vidolob */
 public class WysiwygEditor extends AbstractEditorPresenter {
 
-    private ProjectServiceClient projectServiceClient;
-    private final DialogFactory dialogFactory;
+    private final ProjectServiceClient projectServiceClient;
+    private final DialogFactory        dialogFactory;
+    private final AppContext           appContext;
+
     private RichTextArea textArea;
 
-    public WysiwygEditor(ProjectServiceClient projectServiceClient, DialogFactory dialogFactory) {
+    public WysiwygEditor(ProjectServiceClient projectServiceClient, DialogFactory dialogFactory, AppContext appContext) {
         this.projectServiceClient = projectServiceClient;
         this.dialogFactory = dialogFactory;
+        this.appContext = appContext;
     }
 
     /** {@inheritDoc} */
@@ -48,17 +52,19 @@ public class WysiwygEditor extends AbstractEditorPresenter {
         // create editor
         textArea = new RichTextArea();
 
-        projectServiceClient.getFileContent(input.getFile().getPath(), new AsyncRequestCallback<String>(new StringUnmarshaller()) {
-            @Override
-            protected void onSuccess(String result) {
-                textArea.setHTML(result);
-            }
+        projectServiceClient.getFileContent(appContext.getWorkspaceId(),
+                                            input.getFile().getPath(),
+                                            new AsyncRequestCallback<String>(new StringUnmarshaller()) {
+                                                @Override
+                                                protected void onSuccess(String result) {
+                                                    textArea.setHTML(result);
+                                                }
 
-            @Override
-            protected void onFailure(Throwable exception) {
-                Log.error(WysiwygEditor.class, exception);
-            }
-        });
+                                                @Override
+                                                protected void onFailure(Throwable exception) {
+                                                    Log.error(WysiwygEditor.class, exception);
+                                                }
+                                            });
     }
 
     /** {@inheritDoc} */
@@ -111,22 +117,22 @@ public class WysiwygEditor extends AbstractEditorPresenter {
     public void onClose(@NotNull final AsyncCallback<Void> callback) {
         if (isDirty()) {
             dialogFactory.createConfirmDialog(
-                                              "Close", "'" + getEditorInput().getName() + "' has been modified. Save changes?",
-                                              new ConfirmCallback() {
-                                                  @Override
-                                                  public void accepted() {
-                                                      doSave();
-                                                      handleClose();
-                                                      callback.onSuccess(null);
-                                                  }
-                                              },
-                                              new CancelCallback() {
-                                                  @Override
-                                                  public void cancelled() {
-                                                      handleClose();
-                                                      callback.onSuccess(null);
-                                                  }
-                                              }).show();
+                    "Close", "'" + getEditorInput().getName() + "' has been modified. Save changes?",
+                    new ConfirmCallback() {
+                        @Override
+                        public void accepted() {
+                            doSave();
+                            handleClose();
+                            callback.onSuccess(null);
+                        }
+                    },
+                    new CancelCallback() {
+                        @Override
+                        public void cancelled() {
+                            handleClose();
+                            callback.onSuccess(null);
+                        }
+                    }).show();
         } else {
             handleClose();
             callback.onSuccess(null);
