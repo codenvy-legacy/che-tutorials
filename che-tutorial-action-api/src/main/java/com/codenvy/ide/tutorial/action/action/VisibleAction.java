@@ -29,7 +29,7 @@ public class VisibleAction extends Action {
 
     @Inject
     public VisibleAction(ActionTutorialResources resources) {
-        super("Visible item", "This item will be invisible", resources.item());
+        super("Visible item", "This item will be invisible", resources.item(), null);
     }
 
     /** {@inheritDoc} */

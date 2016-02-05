@@ -27,7 +27,7 @@ public class CreateGistAction extends Action {
     public CreateGistAction(GistExtensionResources resources,
                             CreateGistPresenter createGistPresenter,
                             GistExtensionLocalizationConstant localizationConstants) {
-        super(localizationConstants.createGistActionText(), localizationConstants.createGistActionDescription(), resources.github());
+        super(localizationConstants.createGistActionText(), localizationConstants.createGistActionDescription(), resources.github(), null);
         this.createGistPresenter = createGistPresenter;
     }
 

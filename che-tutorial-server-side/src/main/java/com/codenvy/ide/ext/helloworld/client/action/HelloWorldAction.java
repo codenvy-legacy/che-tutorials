@@ -36,7 +36,7 @@ public class HelloWorldAction extends Action {
 
     @Inject
     public HelloWorldAction(AsyncRequestFactory asyncRequestFactory) {
-        super(resource.hello());
+        super(null, null, resource.hello(), null);
         this.asyncRequestFactory = asyncRequestFactory;
     }
 

@@ -29,7 +29,7 @@ public class EnableAction extends Action {
 
     @Inject
     public EnableAction(ActionTutorialResources resources) {
-        super("Enable item", "This item will be disable", resources.item());
+        super("Enable item", "This item will be disable", resources.item(), null);
     }
 
     /** {@inheritDoc} */
