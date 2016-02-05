@@ -29,7 +29,7 @@ public class ChangeItemAction extends Action {
     @Inject
     public ChangeItemAction(ActionTutorialResources resources) {
         super("Change visibility and availability", "The action for changing visibility and availability of other items",
-              resources.item());
+              resources.item(), null);
     }
 
     /** {@inheritDoc} */

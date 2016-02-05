@@ -49,7 +49,7 @@ public class ActionTutorialExtension {
 
         // Create drop down group
         DefaultActionGroup popupGroup = new DefaultActionGroup("Drop down group", true, actionManager);
-        popupGroup.getTemplatePresentation().setIcon(resources.item());
+        popupGroup.getTemplatePresentation().setImageResource(resources.item());
         actionManager.registerAction("dropDownGroup", popupGroup);
         actionGroup.add(popupGroup);
 
